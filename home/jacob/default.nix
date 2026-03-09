@@ -1,0 +1,24 @@
+{ pkgs, pkgs-unstable, ... }:
+
+{
+  home.username = "jacob";
+  home.homeDirectory = "/home/jacob";
+
+  # This value should match the NixOS release you installed from.
+  # Do NOT change it unless you have read the relevant documentation.
+  home.stateVersion = "25.11";
+
+  # Let home-manager manage itself.
+  programs.home-manager.enable = true;
+
+  # ---------------------------------------------------------------------------
+  # User packages:
+  #   - Use `pkgs.*`          for stable (nixos-25.11) packages.
+  #   - Use `pkgs-unstable.*` for the latest unstable packages.
+  # ---------------------------------------------------------------------------
+  home.packages = with pkgs; [
+    # pkgs._1password-gui
+
+    pkgs-unstable.antigravity
+  ];
+}

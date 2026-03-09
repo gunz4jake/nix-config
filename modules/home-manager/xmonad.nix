@@ -27,6 +27,7 @@ in {
         import XMonad.Config.Desktop
         import XMonad.Hooks.DynamicLog
         import XMonad.Hooks.ManageDocks
+        import XMonad.Layout.Spacing
         import XMonad.Util.Run (spawnPipe)
         import XMonad.Util.SpawnOnce (spawnOnce)
         import XMonad.Util.EZConfig (additionalKeys)
@@ -41,9 +42,14 @@ in {
             , normalBorderColor = "${active}"
             , borderWidth = 2
             , manageHook = manageDocks <+> manageHook desktopConfig
-            , layoutHook = avoidStruts $ layoutHook desktopConfig
+            , layoutHook = avoidStruts $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True $ layoutHook desktopConfig
             , startupHook = do
                 spawnOnce "feh --bg-fill ~/.background-image.png"
+                spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282828 --height 22 &"
+                spawnOnce "nm-applet &"
+                spawnOnce "blueman-applet &"
+                spawnOnce "volumeicon &"
+                spawnOnce "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
                 startupHook desktopConfig
             , logHook = dynamicLogWithPP xmobarPP
               { ppOutput = hPutStrLn xmproc
@@ -58,69 +64,12 @@ in {
 
     home.packages = with pkgs; [
       alacritty
-      xmobar
-      rofi
-      picom
       feh
-      nerd-fonts.fira-code
+      trayer
+      networkmanagerapplet
+      blueman
+      volumeicon
+      polkit_gnome
     ];
-
-    services.picom = {
-      enable = true;
-      fade = true;
-      fadeDelta = 4;
-      shadow = true;
-      shadowExclude = [ "class_g = 'xmobar'" ];
-      settings = {
-        corner-radius = 8;
-      };
-    };
-
-    home.file.".config/xmobar/xmobarrc".text = ''
-      Config { font = "xft:FiraCode Nerd Font:size=10:bold"
-             , additionalFonts = [ "xft:FiraCode Nerd Font:size=12" ]
-             , bgColor = "${bg}"
-             , fgColor = "${fg}"
-             , position = Top
-             , commands = [ Run Cpu ["-L","3","-H","50","--normal","${fg}","--high","${red}"] 10
-                          , Run Memory ["-t","Mem: <usedratio>%"] 10
-                          , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                          , Run StdinReader
-                          ]
-             , sepChar = "%"
-             , alignSep = "}{"
-             , template = " %StdinReader% }{ <fn=1></fn>  %cpu% | <fn=1></fn>  %memory% | <fc=${yellow}><fn=1>󰃭</fn>  %date%</fc> "
-             }
-    '';
-
-    xdg.configFile."rofi/config.rasi".text = ''
-      configuration {
-        modi: "window,run,ssh,drun";
-        font: "FiraCode Nerd Font 10";
-        show-icons: true;
-      }
-      * {
-        bg: ${bg};
-        fg: ${fg};
-        yellow: ${yellow};
-        active: ${active};
-        background-color: @bg;
-        text-color: @fg;
-      }
-      window {
-        border: 2px;
-        border-color: @yellow;
-        border-radius: 8px;
-        padding: 5px;
-      }
-      element {
-        padding: 5px;
-      }
-      element selected {
-        background-color: @active;
-        text-color: @yellow;
-        border-radius: 4px;
-      }
-    '';
   };
 }

@@ -3,6 +3,10 @@
 {
   imports = [
     ../../modules/home-manager/xmonad.nix
+    ../../modules/home-manager/xmobar.nix
+    ../../modules/home-manager/rofi.nix
+    ../../modules/home-manager/picom.nix
+    ../../modules/home-manager/dunst.nix
   ];
 
   custom.desktop.xmonad.enable = true;

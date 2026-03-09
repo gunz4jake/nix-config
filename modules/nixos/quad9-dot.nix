@@ -19,6 +19,7 @@ in {
     services.resolved = {
       enable = true;
       dnsovertls = "true";
+      dnssec = "true";
     };
   };
 }

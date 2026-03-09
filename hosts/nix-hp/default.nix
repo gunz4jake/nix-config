@@ -9,9 +9,11 @@
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/audio.nix
     ../../modules/nixos/packages.nix
+    ../../modules/nixos/quad9-dot.nix
   ];
 
   networking.hostName = "nix-hp";
+  networking.quad9-dot.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   time.timeZone = "America/Detroit";

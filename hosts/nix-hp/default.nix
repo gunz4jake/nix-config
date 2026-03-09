@@ -4,13 +4,19 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../modules/nixos/boot.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/locale.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/audio.nix
     ../../modules/nixos/packages.nix
   ];
+
+  networking.hostName = "nix-hp";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  time.timeZone = "America/Detroit";
+
+  programs._1password-gui.polkitPolicyOwners = [ "jacob" ];
 
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.jacob = {

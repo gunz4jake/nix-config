@@ -28,6 +28,7 @@ in {
         import XMonad.Hooks.DynamicLog
         import XMonad.Hooks.ManageDocks
         import XMonad.Util.Run (spawnPipe)
+        import XMonad.Util.SpawnOnce (spawnOnce)
         import XMonad.Util.EZConfig (additionalKeys)
         import System.IO
 
@@ -41,13 +42,16 @@ in {
             , borderWidth = 2
             , manageHook = manageDocks <+> manageHook desktopConfig
             , layoutHook = avoidStruts $ layoutHook desktopConfig
+            , startupHook = do
+                spawnOnce "feh --bg-fill ~/.background-image.png"
+                startupHook desktopConfig
             , logHook = dynamicLogWithPP xmobarPP
               { ppOutput = hPutStrLn xmproc
               , ppTitle = xmobarColor "${fg}" "" . shorten 50
               , ppCurrent = xmobarColor "${yellow}" "" . wrap "[" "]"
               }
             } `additionalKeys`
-            [ ((mod4Mask, xK_p), spawn "wofi --show run")
+            [ ((mod4Mask, xK_p), spawn "rofi -show drun")
             ]
       '';
     };
@@ -55,11 +59,26 @@ in {
     home.packages = with pkgs; [
       alacritty
       xmobar
-      wofi
+      rofi
+      picom
+      feh
+      nerd-fonts.fira-code
     ];
 
+    services.picom = {
+      enable = true;
+      fade = true;
+      fadeDelta = 4;
+      shadow = true;
+      shadowExclude = [ "class_g = 'xmobar'" ];
+      settings = {
+        corner-radius = 8;
+      };
+    };
+
     home.file.".config/xmobar/xmobarrc".text = ''
-      Config { font = "xft:Sans-9:bold"
+      Config { font = "xft:FiraCode Nerd Font:size=10:bold"
+             , additionalFonts = [ "xft:FiraCode Nerd Font:size=12" ]
              , bgColor = "${bg}"
              , fgColor = "${fg}"
              , position = Top
@@ -70,59 +89,37 @@ in {
                           ]
              , sepChar = "%"
              , alignSep = "}{"
-             , template = "%StdinReader% }{ %cpu% | %memory% | <fc=${yellow}>%date%</fc>"
+             , template = " %StdinReader% }{ <fn=1></fn>  %cpu% | <fn=1></fn>  %memory% | <fc=${yellow}><fn=1>󰃭</fn>  %date%</fc> "
              }
     '';
 
-    xdg.configFile."wofi/config".text = ''
-      width=600
-      height=400
-      location=center
-      show=drun
-      prompt=Run
-      allow_markup=true
-      no_actions=true
-      halign=fill
-      orientation=vertical
-      content_halign=fill
-    '';
-
-    xdg.configFile."wofi/style.css".text = ''
+    xdg.configFile."rofi/config.rasi".text = ''
+      configuration {
+        modi: "window,run,ssh,drun";
+        font: "FiraCode Nerd Font 10";
+        show-icons: true;
+      }
+      * {
+        bg: ${bg};
+        fg: ${fg};
+        yellow: ${yellow};
+        active: ${active};
+        background-color: @bg;
+        text-color: @fg;
+      }
       window {
-        margin: 0px;
-        border: 2px solid ${yellow};
-        background-color: ${bg};
+        border: 2px;
+        border-color: @yellow;
         border-radius: 8px;
+        padding: 5px;
       }
-      #input {
-        margin: 5px;
-        border: none;
-        color: ${fg};
-        background-color: ${altBg};
+      element {
+        padding: 5px;
       }
-      #inner-box {
-        margin: 5px;
-        border: none;
-        background-color: ${bg};
-      }
-      #outer-box {
-        margin: 5px;
-        border: none;
-        background-color: ${bg};
-      }
-      #scroll {
-        margin: 0px;
-        border: none;
-      }
-      #text {
-        margin: 5px;
-        border: none;
-        color: ${fg};
-      }
-      #entry:selected {
-        background-color: ${active};
+      element selected {
+        background-color: @active;
+        text-color: @yellow;
         border-radius: 4px;
-        outline: none;
       }
     '';
   };

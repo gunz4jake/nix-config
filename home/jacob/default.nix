@@ -1,6 +1,12 @@
 { pkgs, pkgs-unstable, ... }:
 
 {
+  imports = [
+    ../../modules/home-manager/xmonad.nix
+  ];
+
+  custom.desktop.xmonad.enable = true;
+
   home.username = "jacob";
   home.homeDirectory = "/home/jacob";
 

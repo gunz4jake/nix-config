@@ -17,6 +17,9 @@
 
   networking.hostName = "nix-hp";
   networking.quad9-dot.enable = true;
+
+  # Increase download buffer size to prevent "download buffer is full" warnings
+  nix.settings.download-buffer-size = 536870912; # 512 MB
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   time.timeZone = "America/Detroit";

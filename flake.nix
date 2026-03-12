@@ -19,6 +19,7 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin, ... }:
   let
     system-linux = "x86_64-linux";
+    config.allowUnfree = true;
     system-darwin = "aarch64-darwin";
 
     pkgs-unstable-linux = import nixpkgs-unstable {

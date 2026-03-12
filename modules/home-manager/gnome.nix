@@ -12,6 +12,8 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       gnomeExtensions.blur-my-shell
+      gnome-tweaks
+      gnome-extension-manager
     ];
 
     dconf.settings = {
@@ -24,11 +26,32 @@ in {
 
       "org/gnome/desktop/interface" = {
         show-battery-percentage = true;
+        clock-format = "12h";
       };
 
       "org/gnome/desktop/wm/preferences" = {
         button-layout = "appmenu:minimize,maximize,close";
       };
     };
+
+    home.pointerCursor = {
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
+      size = 24;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+
+    xdg.configFile."autostart/1password.desktop".text = ''
+      [Desktop Entry]
+      Name=1Password
+      Exec=1password --silent
+      Terminal=false
+      Type=Application
+      Icon=1password
+      StartupWMClass=1Password
+      Comment=Password manager and secure wallet
+      Categories=Office;Utility;
+    '';
   };
 }

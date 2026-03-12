@@ -27,6 +27,8 @@ in {
       "org/gnome/desktop/interface" = {
         show-battery-percentage = true;
         clock-format = "12h";
+        cursor-theme = "Bibata-Modern-Classic";
+        cursor-size = 24;
       };
 
       "org/gnome/desktop/wm/preferences" = {

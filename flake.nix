@@ -41,6 +41,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = { pkgs-unstable = pkgs-unstable-linux; };
             home-manager.users.jacob = import ./home/jacob;
           }
@@ -58,6 +59,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = { pkgs-unstable = pkgs-unstable-darwin; };
             home-manager.users.jacob = import ./home/jacob/macbook.nix;
           }

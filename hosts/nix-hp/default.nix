@@ -19,6 +19,7 @@
   networking.quad9-dot.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   time.timeZone = "America/Detroit";
 
   programs._1password-gui.polkitPolicyOwners = [ "jacob" ];

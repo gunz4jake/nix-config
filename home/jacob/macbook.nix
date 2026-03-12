@@ -19,6 +19,14 @@
     pkgs-unstable.antigravity
   ];
 
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    commandLineArgs = [
+      "--disable-features=OutdatedBuildDetector"
+    ];
+  };
+
   programs.zsh = {
     enable = true;
     

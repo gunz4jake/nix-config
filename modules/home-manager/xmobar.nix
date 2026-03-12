@@ -15,7 +15,35 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       xmobar
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      nerd-fonts.fira-code
+      xorg.xprop
+      (pkgs.writeShellScriptBin "trayer-padding-icon.sh" ''
+        #!/bin/sh
+        width=$(xprop -name panel | awk '/program specified minimum size/ {print $5}')
+        if [ -z "$width" ]; then
+            width=$(xprop -class trayer | awk '/program specified minimum size/ {print $5}')
+        fi
+        if [ -z "$width" ]; then
+            width=0
+        fi
+        
+        # If width is 0, output nothing instead of an invalid padding icon.
+        if [ "$width" -eq 0 ]; then
+            echo ""
+            exit 0
+        fi
+
+        iconfile="/tmp/trayer-padding-''${width}px.xpm"
+        if [ ! -f "$iconfile" ]; then
+            echo "/* XPM */" > "$iconfile"
+            echo "static char * trayer_pad_xpm[] = {" >> "$iconfile"
+            echo "\"$width 1 1 1\"," >> "$iconfile"
+            echo "\"  c None\"," >> "$iconfile"
+            pixels=$(printf "%''${width}s" "")
+            echo "\"$pixels\"};" >> "$iconfile"
+        fi
+        echo "<icon=$iconfile/>"
+      '')
     ];
 
     home.file.".config/xmobar/xmobarrc".text = ''
@@ -23,15 +51,17 @@ in {
              , additionalFonts = [ "xft:FiraCode Nerd Font:size=12" ]
              , bgColor = "${bg}"
              , fgColor = "${fg}"
-             , position = Top
+             , position = TopSize L 100 24
              , commands = [ Run Cpu ["-L","3","-H","50","--normal","${fg}","--high","${red}"] 10
                           , Run Memory ["-t","Mem: <usedratio>%"] 10
-                          , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                          , Run Battery ["-t", "<left>%"] 50
+                          , Run Date "%a, %b %d  %I:%M %p" "date" 10
+                          , Run Com "trayer-padding-icon.sh" [] "trayerpad" 10
                           , Run StdinReader
                           ]
              , sepChar = "%"
              , alignSep = "}{"
-             , template = " %StdinReader% }{ <fn=1></fn>  %cpu% | <fn=1></fn>  %memory% | <fc=${yellow}><fn=1>󰃭</fn>  %date%</fc> "
+             , template = " %StdinReader% }{ <fn=1></fn>  %cpu% | <fn=1></fn>  %memory% | <fc=${yellow}><fn=1>󰁹</fn>  %battery% | <fn=1>󰃭</fn>  %date%</fc> %trayerpad%"
              }
     '';
   };

@@ -28,6 +28,7 @@ in {
         import XMonad.Hooks.DynamicLog
         import XMonad.Hooks.ManageDocks
         import XMonad.Layout.Spacing
+        import XMonad.Layout.NoBorders (smartBorders)
         import XMonad.Util.Run (spawnPipe)
         import XMonad.Util.SpawnOnce (spawnOnce)
         import XMonad.Util.EZConfig (additionalKeys)
@@ -42,10 +43,10 @@ in {
             , normalBorderColor = "${active}"
             , borderWidth = 2
             , manageHook = manageDocks <+> manageHook desktopConfig
-            , layoutHook = avoidStruts $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True $ layoutHook desktopConfig
+            , layoutHook = avoidStruts $ smartBorders $ spacingWithEdge 5 $ layoutHook desktopConfig
             , startupHook = do
                 spawnOnce "feh --bg-fill ~/.background-image.png"
-                spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282828 --height 22 &"
+                spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282828 --height 24 &"
                 spawnOnce "nm-applet &"
                 spawnOnce "blueman-applet &"
                 spawnOnce "volumeicon &"

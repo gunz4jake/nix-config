@@ -13,7 +13,7 @@
   home.packages = with pkgs; [
     pkgs.prismlauncher
 
-    pkgs.unstable-darwin.antigravity
+    pkgs-unstable.antigravity
   ];
 
   programs.zsh = {

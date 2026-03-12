@@ -20,7 +20,7 @@
 
   programs._1password-gui.polkitPolicyOwners = [ "jacob" ];
 
-  custom.desktop.environment = "xmonad";
+  custom.desktop.environment = "gnome";
 
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.jacob = {

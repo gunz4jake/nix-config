@@ -14,6 +14,7 @@
     pkgs.prismlauncher
     pkgs.brave
     pkgs.pfetch-rs
+    pkgs.iterm2
 
     pkgs-unstable.antigravity
   ];

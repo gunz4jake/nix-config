@@ -13,12 +13,26 @@
   home.packages = with pkgs; [
     pkgs.prismlauncher
     pkgs.brave
+    pkgs.pfetch-rs
 
     pkgs-unstable.antigravity
   ];
 
   programs.zsh = {
     enable = true;
+    
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [
+        "git"
+      ];
+    };
+
+    initContent = ''
+      pfetch
+    '';
+
     shellAliases = {
       # Rebuild the macOS system using nix-darwin
       darwin-rebuild = "sudo darwin-rebuild switch --flake ~/Jacob/Coding/nix-config#macbook";

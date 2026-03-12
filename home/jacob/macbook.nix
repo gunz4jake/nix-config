@@ -12,6 +12,7 @@
 
   home.packages = with pkgs; [
     pkgs.prismlauncher
+    pkgs.brave
 
     pkgs-unstable.antigravity
   ];

@@ -7,9 +7,11 @@
     ../../modules/home-manager/rofi.nix
     ../../modules/home-manager/picom.nix
     ../../modules/home-manager/dunst.nix
+    ../../modules/home-manager/gnome.nix
   ];
 
   custom.desktop.xmonad.enable = true;
+  custom.desktop.gnome.enable = true;
 
   home.username = "jacob";
   home.homeDirectory = "/home/jacob";

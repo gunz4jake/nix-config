@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
 
+    ../../modules/nixos/tailscale.nix
     ../../modules/nixos/nix.nix
     ../../modules/nixos/networking.nix
     ../../modules/nixos/locale.nix

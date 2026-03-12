@@ -30,7 +30,6 @@
   # ---------------------------------------------------------------------------
   home.packages = with pkgs; [
     # pkgs._1password-gui
-    pkgs.tailscale
 
     pkgs-unstable.antigravity
   ];

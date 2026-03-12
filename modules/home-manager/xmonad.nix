@@ -18,7 +18,7 @@ in {
     enable = mkEnableOption "xmonad window manager module";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && !config.custom.desktop.gnome.enable) {
     xsession.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;

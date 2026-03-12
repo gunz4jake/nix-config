@@ -10,7 +10,7 @@ let
   yellow = "#d79921";
   red = "#cc241d";
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && !config.custom.desktop.gnome.enable) {
     services.dunst = {
       enable = true;
       settings = {

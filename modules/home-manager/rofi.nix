@@ -10,7 +10,7 @@ let
   yellow = "#d79921";
   active = "#504945";
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && !config.custom.desktop.gnome.enable) {
     home.packages = with pkgs; [
       rofi
     ];

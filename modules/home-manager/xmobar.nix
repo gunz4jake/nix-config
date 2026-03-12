@@ -12,7 +12,7 @@ let
   active = "#504945";
   red = "#cc241d";
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && !config.custom.desktop.gnome.enable) {
     home.packages = with pkgs; [
       xmobar
       nerd-fonts.fira-code

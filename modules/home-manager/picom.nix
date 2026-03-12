@@ -5,7 +5,7 @@ with lib;
 let
   cfg = config.custom.desktop.xmonad;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && !config.custom.desktop.gnome.enable) {
     services.picom = {
       enable = true;
       fade = true;

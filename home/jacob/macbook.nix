@@ -12,7 +12,7 @@
 
   home.packages = with pkgs; [
     pkgs.prismlauncher
-    pkgs.brave
+    # pkgs.brave
     pkgs.pfetch-rs
     pkgs.iterm2
 

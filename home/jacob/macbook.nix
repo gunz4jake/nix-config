@@ -40,6 +40,9 @@
       
       # Update flake inputs
       nix-update = "nix flake update --flake ~/Jacob/Coding/nix-config";
+
+      # vim opens neovim
+      vim = "nvim";
     };
   };
 }

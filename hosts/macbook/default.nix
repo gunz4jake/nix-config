@@ -39,4 +39,5 @@
       SUEnableAutomaticChecks = false;
     };
   };
+  system.primaryUser = "jacob";
 }

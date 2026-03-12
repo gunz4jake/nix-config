@@ -12,6 +12,8 @@
 
   home.packages = with pkgs; [
     pkgs.prismlauncher
+
+    pkgs.unstable.antigravity
   ];
 
   programs.zsh = {

@@ -13,14 +13,14 @@
   home.packages = with pkgs; [
     pkgs.prismlauncher
 
-    pkgs.unstable.antigravity
+    pkgs.unstable-darwin.antigravity
   ];
 
   programs.zsh = {
     enable = true;
     shellAliases = {
       # Rebuild the macOS system using nix-darwin
-      darwin-rebuild = "darwin-rebuild switch --flake ~/Jacob/Coding/nix-config#macbook";
+      darwin-rebuild = "sudo darwin-rebuild switch --flake ~/Jacob/Coding/nix-config#macbook";
       
       # Update flake inputs
       nix-update = "nix flake update --flake ~/Jacob/Coding/nix-config";

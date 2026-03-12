@@ -33,4 +33,10 @@
     name = "jacob";
     home = "/Users/jacob";
   };
+  system.defaults.CustomUserPreferences = {
+    "com.brave.Browser" = {
+      SUAutomaticallyUpdate = false;
+      SUEnableAutomaticChecks = false;
+    };
+  };
 }

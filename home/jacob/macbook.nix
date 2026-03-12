@@ -13,4 +13,15 @@
   home.packages = with pkgs; [
     pkgs.prismlauncher
   ];
+
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      # Rebuild the macOS system using nix-darwin
+      darwin-rebuild = "darwin-rebuild switch --flake ~/Jacob/Coding/nix-config#macbook";
+      
+      # Update flake inputs
+      nix-update = "nix flake update --flake ~/Jacob/Coding/nix-config";
+    };
+  };
 }

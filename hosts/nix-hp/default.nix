@@ -22,6 +22,11 @@
   nix.settings.download-buffer-size = 536870912; # 512 MB
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  # Enable systemd in initrd for systemd-cryptenroll fido2 support
+  boot.initrd.systemd.enable = true;
+  boot.initrd.luks.devices."root".crypttabExtraOpts = [ "fido2-device=auto" ];
+
   time.timeZone = "America/Detroit";
 
   programs._1password-gui.polkitPolicyOwners = [ "jacob" ];

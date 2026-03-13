@@ -13,6 +13,7 @@
     ../../modules/nixos/packages.nix
     ../../modules/nixos/quad9-dot.nix
     ../../modules/nixos/zram.nix
+    ../../modules/nixos/firewall.nix
   ];
 
   networking.hostName = "nixpad";

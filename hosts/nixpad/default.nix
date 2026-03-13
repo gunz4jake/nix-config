@@ -29,6 +29,9 @@
   boot.initrd.systemd.enable = true;
   boot.initrd.luks.devices."root".crypttabExtraOpts = [ "fido2-device=auto" ];
 
+  # Enable boot splash
+  boot.plymouth.enable = true;
+
   time.timeZone = "America/Detroit";
 
   programs._1password-gui.polkitPolicyOwners = [ "jacob" ];

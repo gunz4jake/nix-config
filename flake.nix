@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -16,7 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin, nixos-hardware,... }:
   let
     system-linux = "x86_64-linux";
     system-darwin = "aarch64-darwin";
@@ -36,6 +37,7 @@
         system = system-linux;
         modules = [
           ./hosts/nixpad
+          nixos-hardware.nixosModules.lenovo-thinkpad-t480
 
           home-manager.nixosModules.home-manager
           {

@@ -26,8 +26,8 @@
   boot.kernelParams = [ "quiet" ];
   
   # Enable systemd in initrd for systemd-cryptenroll fido2 support
-  boot.initrd.systemd.enable = true;
-  boot.initrd.luks.devices."root".crypttabExtraOpts = [ "fido2-device=auto" ];
+#  boot.initrd.systemd.enable = true;
+#  boot.initrd.luks.devices."root".crypttabExtraOpts = [ "fido2-device=auto" ];
 
   time.timeZone = "America/Detroit";
 

@@ -29,6 +29,8 @@ in {
         clock-format = "12h";
         cursor-theme = "Bibata-Modern-Classic";
         cursor-size = 24;
+        color-scheme = "prefer-dark";
+        accent-color = "red";
       };
 
       "org/gnome/desktop/wm/preferences" = {

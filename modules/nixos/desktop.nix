@@ -28,6 +28,11 @@ in {
       # GNOME Desktop Environment.
       services.displayManager.gdm.enable = true;
       services.desktopManager.gnome.enable = true;
+      services.gvfs = {
+        enable = true;
+        package = pkgs.gnome.gvfs;
+      };
+      programs.fuse.enable = true;
     })
     (mkIf (cfg.environment == "xmonad") {
       # Ly Display Manager

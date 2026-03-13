@@ -33,6 +33,8 @@ in {
         package = pkgs.gnome.gvfs;
       };
       programs.fuse.enable = true;
+      programs.dconf.enable = true;
+      services.dbus.packages = [ pkgs.gsettings-desktop-schemas pkgs.gtk3 ];
     })
     (mkIf (cfg.environment == "xmonad") {
       # Ly Display Manager

@@ -16,6 +16,11 @@ in {
       gnome-extension-manager
     ];
 
+    gtk = {
+      enable = true;
+      theme.name = "Adwaita";
+    };
+
     dconf.settings = {
       "org/gnome/shell" = {
         disable-user-extensions = false;

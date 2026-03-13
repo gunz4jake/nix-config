@@ -32,5 +32,6 @@
     # pkgs._1password-gui
 
     pkgs-unstable.antigravity
+    pkgs-unstable.brave
   ];
 }

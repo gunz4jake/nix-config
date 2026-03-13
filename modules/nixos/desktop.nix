@@ -23,9 +23,6 @@ in {
 
       # Touchpad support.
       services.libinput.enable = true;
-
-      # Browser.
-      programs.firefox.enable = true;
     }
     (mkIf (cfg.environment == "gnome") {
       # GNOME Desktop Environment.

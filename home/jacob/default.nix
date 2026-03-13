@@ -33,5 +33,6 @@
 
     pkgs-unstable.antigravity
     pkgs-unstable.brave
+    pkgs-unstable.prismlauncher
   ];
 }

@@ -32,6 +32,22 @@
     };
   in {
     nixosConfigurations = {
+      nixpad = nixpkgs.lib.nixosSystem {
+        system = system-linux;
+        modules = [
+          ./hosts/nixpad
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            home-manager.extraSpecialArgs = { pkgs-unstable = pkgs-unstable-linux; };
+            home-manager.users.jacob = import ./home/jacob;
+          }
+        ];
+      };
+
       nix-hp = nixpkgs.lib.nixosSystem {
         system = system-linux;
         modules = [

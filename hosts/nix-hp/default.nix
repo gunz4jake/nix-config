@@ -13,6 +13,7 @@
     ../../modules/nixos/packages.nix
     ../../modules/nixos/quad9-dot.nix
     ../../modules/nixos/zram.nix
+    ../../modules/nixos/plymouth.nix
   ];
 
   networking.hostName = "nix-hp";
@@ -34,6 +35,7 @@
   programs._1password-gui.polkitPolicyOwners = [ "jacob" ];
 
   custom.desktop.environment = "gnome";
+  custom.plymouth.enable = true;
 
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.jacob = {

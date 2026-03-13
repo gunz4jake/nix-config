@@ -14,6 +14,7 @@
     ../../modules/nixos/quad9-dot.nix
     ../../modules/nixos/zram.nix
     ../../modules/nixos/firewall.nix
+    ../../modules/nixos/plymouth.nix
   ];
 
   networking.hostName = "nixpad";
@@ -31,7 +32,7 @@
   boot.initrd.luks.devices."root".crypttabExtraOpts = [ "fido2-device=auto" ];
 
   # Enable boot splash
-  boot.plymouth.enable = true;
+  custom.plymouth.enable = true;
 
   time.timeZone = "America/Detroit";
 

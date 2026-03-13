@@ -23,6 +23,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   
+  boot.kernelParams = [ "quiet" ];
+  
   # Enable systemd in initrd for systemd-cryptenroll fido2 support
   boot.initrd.systemd.enable = true;
   boot.initrd.luks.devices."root".crypttabExtraOpts = [ "fido2-device=auto" ];

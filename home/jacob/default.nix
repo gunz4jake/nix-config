@@ -29,7 +29,7 @@
   #   - Use `pkgs-unstable.*` for the latest unstable packages.
   # ---------------------------------------------------------------------------
   home.packages = with pkgs; [
-    # pkgs._1password-gui
+    pkgs.openmw
 
     pkgs-unstable.antigravity
     pkgs-unstable.brave

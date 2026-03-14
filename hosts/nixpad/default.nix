@@ -15,6 +15,7 @@
     ../../modules/nixos/zram.nix
     ../../modules/nixos/firewall.nix
     ../../modules/nixos/plymouth.nix
+    ../../modules/nixos/undervolt.nix
   ];
 
   networking.hostName = "nixpad";

@@ -12,13 +12,13 @@
     enable = true;
 
     # CPU core voltage offset (mV). Negative = lower voltage.
-    coreOffset = -100;
+    coreOffset = -70;
 
     # CPU cache / ring bus offset. Usually safe to match coreOffset.
-    uncoreOffset = -100;
+    uncoreOffset = -70;
 
     # Integrated GPU offset. Keep conservative to avoid display artifacts.
-    gpuOffset = -50;
+    gpuOffset = -40;
 
     # Reapply settings every 30 s (helps after suspend/resume resets).
     useTimer = true;

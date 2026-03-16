@@ -10,7 +10,6 @@
     ../../modules/home-manager/gnome.nix
   ];
 
-  custom.desktop.xmonad.enable = true;
   custom.desktop.gnome.enable = true;
 
   home.username = "jacob";
@@ -31,8 +30,8 @@
   home.packages = with pkgs; [
     pkgs.openmw
 
-    pkgs-unstable.antigravity
     pkgs-unstable.brave
     pkgs-unstable.prismlauncher
+    pkgs-unstable.claude-code-bin
   ];
 }

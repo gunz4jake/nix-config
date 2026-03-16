@@ -3,16 +3,7 @@
 with lib;
 let
   cfg = config.custom.desktop.xmonad;
-
-  # Gruvbox Dark Colors
-  bg = "#282828";
-  fg = "#ebdbb2";
-  yellow = "#d79921";
-  orange = "#fe8019";
-  active = "#504945";
-  red = "#cc241d";
-  altBg = "#3c3836";
-
+  inherit (import ./gruvbox.nix) bg fg yellow orange active red altBg;
 in {
   options.custom.desktop.xmonad = {
     enable = mkEnableOption "xmonad window manager module";

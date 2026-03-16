@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration for nix-hp";
+  description = "NixOS/nix-darwin configuration for nixpad, nix-hp, and macbook";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";

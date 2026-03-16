@@ -7,6 +7,6 @@
   };
 
   boot.kernel.sysctl = {
-  "vm.swappiness" = 180;
-};
+    "vm.swappiness" = 180;
+  };
 }

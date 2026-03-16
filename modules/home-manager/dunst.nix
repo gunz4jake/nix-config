@@ -4,11 +4,7 @@ with lib;
 
 let
   cfg = config.custom.desktop.xmonad;
-  
-  bg = "#282828";
-  fg = "#ebdbb2";
-  yellow = "#d79921";
-  red = "#cc241d";
+  inherit (import ./gruvbox.nix) bg fg yellow red;
 in {
   config = mkIf (cfg.enable && !config.custom.desktop.gnome.enable) {
     services.dunst = {

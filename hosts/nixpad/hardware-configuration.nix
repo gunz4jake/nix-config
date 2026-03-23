@@ -16,7 +16,7 @@
   fileSystems."/" =
     { device = "/dev/mapper/root";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd" "noatime" ];
+      options = [ "subvol=@" "compress=lzo" "noatime" ];
     };
 
   boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/6da8aa9d-e3df-44dd-995d-5b591640fb6f";
@@ -24,19 +24,19 @@
   fileSystems."/home" =
     { device = "/dev/mapper/root";
       fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd" "noatime" ];
+      options = [ "subvol=@home" "compress=lzo" "noatime" ];
     };
 
   fileSystems."/var/log" =
     { device = "/dev/mapper/root";
       fsType = "btrfs";
-      options = [ "subvol=@log" "compress=zstd" "noatime" ];
+      options = [ "subvol=@log" "compress=lzo" "noatime" ];
     };
 
   fileSystems."/nix" =
     { device = "/dev/mapper/root";
       fsType = "btrfs";
-      options = [ "subvol=@nix" "compress=zstd" "noatime" ];
+      options = [ "subvol=@nix" "compress=lzo" "noatime" ];
     };
 
   fileSystems."/boot" =

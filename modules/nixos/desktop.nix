@@ -14,6 +14,13 @@ in {
   };
 
   config = mkMerge [
+    # Propagate the system desktop choice into all home-manager users
+    # so it doesn't need to be set separately in the home config.
+    {
+      home-manager.sharedModules = [{
+        custom.desktop.environment = cfg.environment;
+      }];
+    }
     {
       # Enable the X11 windowing system.
       services.xserver.enable = true;

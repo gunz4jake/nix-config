@@ -24,7 +24,24 @@
   networking.quad9-dot.enable = true;
   custom.xanmod-bore.enable = true;
 
-  networking.extraHosts = 
+  # Use S3 deep sleep instead of s2idle — dramatically reduces battery drain on suspend.
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
+
+  # Intel UHD 620 — hardware video decoding.
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
+
+  # Bluetooth (laptop — disabled at boot to save power, toggle as needed).
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+
+  networking.extraHosts =
     ''
       10.4.24.146 IT-O-22793.masonk12.net
     '';

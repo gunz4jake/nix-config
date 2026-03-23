@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.custom.desktop.xmonad;
+  cfg = config.custom.desktop;
   inherit (import ./gruvbox.nix) bg fg yellow red;
 in {
-  config = mkIf (cfg.enable && !config.custom.desktop.gnome.enable) {
+  config = mkIf (cfg.environment == "xmonad") {
     home.packages = with pkgs; [
       xmobar
       nerd-fonts.fira-code

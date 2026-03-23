@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.custom.desktop.xmonad;
+  cfg = config.custom.desktop;
 in {
-  config = mkIf (cfg.enable && !config.custom.desktop.gnome.enable) {
+  config = mkIf (cfg.environment == "xmonad") {
     services.picom = {
       enable = true;
       fade = true;

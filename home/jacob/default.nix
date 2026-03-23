@@ -2,15 +2,14 @@
 
 {
   imports = [
+    ../../modules/home-manager/desktop.nix
+    ../../modules/home-manager/gnome.nix
     ../../modules/home-manager/xmonad.nix
     ../../modules/home-manager/xmobar.nix
     ../../modules/home-manager/rofi.nix
     ../../modules/home-manager/picom.nix
     ../../modules/home-manager/dunst.nix
-    ../../modules/home-manager/gnome.nix
   ];
-
-  custom.desktop.gnome.enable = true;
 
   home.username = "jacob";
   home.homeDirectory = "/home/jacob";

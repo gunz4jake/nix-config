@@ -3,13 +3,9 @@
 with lib;
 
 let
-  cfg = config.custom.desktop.gnome;
+  cfg = config.custom.desktop;
 in {
-  options.custom.desktop.gnome = {
-    enable = mkEnableOption "GNOME settings and extensions";
-  };
-
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.environment == "gnome") {
     home.packages = with pkgs; [
       gnomeExtensions.blur-my-shell
       gnome-tweaks

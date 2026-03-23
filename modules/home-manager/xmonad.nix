@@ -2,14 +2,10 @@
 
 with lib;
 let
-  cfg = config.custom.desktop.xmonad;
+  cfg = config.custom.desktop;
   inherit (import ./gruvbox.nix) bg fg yellow orange active red altBg;
 in {
-  options.custom.desktop.xmonad = {
-    enable = mkEnableOption "xmonad window manager module";
-  };
-
-  config = mkIf (cfg.enable && !config.custom.desktop.gnome.enable) {
+  config = mkIf (cfg.environment == "xmonad") {
     xsession.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;

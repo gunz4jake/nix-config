@@ -29,6 +29,7 @@
   # ---------------------------------------------------------------------------
   home.packages = with pkgs; [
     pkgs.openmw
+    pkgs.remmina
 
     pkgs-unstable.brave
     pkgs-unstable.prismlauncher

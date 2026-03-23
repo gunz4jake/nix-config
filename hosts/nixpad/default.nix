@@ -24,5 +24,10 @@
   networking.quad9-dot.enable = true;
   custom.xanmod-bore.enable = true;
 
+  networking.extraHosts = 
+    ''
+      10.4.24.146 IT-O-22793.masonk12.net
+    '';
+
   system.stateVersion = "25.11";
 }

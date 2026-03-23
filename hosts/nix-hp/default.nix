@@ -16,12 +16,12 @@
     ../../modules/nixos/zram.nix
     ../../modules/nixos/firewall.nix
     ../../modules/nixos/plymouth.nix
-    ../../modules/nixos/xanmod-bore.nix
+    ../../modules/nixos/xanmod.nix
   ];
 
   networking.hostName = "nix-hp";
   networking.quad9-dot.enable = true;
-  custom.xanmod-bore.enable = true;
+  custom.xanmod.enable = true;
 
   system.stateVersion = "25.11";
 }

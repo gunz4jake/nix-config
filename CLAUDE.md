@@ -55,7 +55,7 @@ modules/home-manager/      # Reusable home-manager user modules
 | `common.nix` | Bootloader (systemd-boot), LUKS FIDO2 unlock, timezone (America/Detroit), user setup |
 | `desktop.nix` | Desktop environment switch between GNOME and XMonad |
 | `nix.nix` | Flake support, store optimization, weekly GC |
-| `xanmod-bore.nix` | XanMod kernel with BORE CPU scheduler |
+| `xanmod.nix` | XanMod kernel |
 | `undervolt.nix` | Intel CPU undervolting (T480 only: -70mV core/uncore, -40mV GPU) |
 | `quad9-dot.nix` | Quad9 DNS-over-TLS with DNSSEC |
 | `zram.nix` | Compressed RAM swap (50% of RAM, swappiness=180) |

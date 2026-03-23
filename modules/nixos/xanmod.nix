@@ -2,10 +2,10 @@
 
 with lib;
 let
-  cfg = config.custom.xanmod-bore;
+  cfg = config.custom.xanmod;
 in {
-  options.custom.xanmod-bore = {
-    enable = mkEnableOption "XanMod kernel with BORE scheduler";
+  options.custom.xanmod = {
+    enable = mkEnableOption "XanMod kernel";
   };
 
   config = mkIf cfg.enable {

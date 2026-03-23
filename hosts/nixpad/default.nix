@@ -17,12 +17,12 @@
     ../../modules/nixos/firewall.nix
     ../../modules/nixos/plymouth.nix
     ../../modules/nixos/undervolt.nix
-    ../../modules/nixos/xanmod-bore.nix
+    ../../modules/nixos/xanmod.nix
   ];
 
   networking.hostName = "nixpad";
   networking.quad9-dot.enable = true;
-  custom.xanmod-bore.enable = true;
+  custom.xanmod.enable = true;
 
   # Use S3 deep sleep instead of s2idle — dramatically reduces battery drain on suspend.
   boot.kernelParams = [ "mem_sleep_default=deep" ];

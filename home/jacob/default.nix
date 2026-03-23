@@ -30,6 +30,7 @@
   home.packages = with pkgs; [
     pkgs.openmw
     pkgs.remmina
+    pkgs.htop
 
     pkgs-unstable.brave
     pkgs-unstable.prismlauncher

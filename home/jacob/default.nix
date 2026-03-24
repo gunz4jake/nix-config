@@ -9,6 +9,7 @@
     ../../modules/home-manager/rofi.nix
     ../../modules/home-manager/picom.nix
     ../../modules/home-manager/dunst.nix
+    ../../modules/home-manager/plasma.nix
   ];
 
   home.username = "jacob";

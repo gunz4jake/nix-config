@@ -25,6 +25,7 @@
   networking.quad9-dot.enable = true;
   custom.xanmod.enable = true;
   custom.plymouth.enable = true;
+  custom.desktop.environment = "plasma";
 
   # Use S3 deep sleep instead of s2idle — dramatically reduces battery drain on suspend.
   boot.kernelParams = [ "mem_sleep_default=deep" ];

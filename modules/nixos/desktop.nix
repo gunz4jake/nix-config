@@ -7,7 +7,7 @@ let
 in {
   options.custom.desktop = {
     environment = mkOption {
-      type = types.enum [ "gnome" "xmonad" ];
+      type = types.enum [ "gnome" "xmonad" "plasma" ];
       default = "gnome";
       description = "Desktop environment to use.";
     };
@@ -44,6 +44,11 @@ in {
         enable = true;
         enableContribAndExtras = true;
       };
+    })
+    (mkIf (cfg.environment == "plasma") {
+      # SDDM Display Manager + KDE Plasma 6
+      services.displayManager.sddm.enable = true;
+      services.desktopManager.plasma6.enable = true;
     })
   ];
 }

@@ -16,7 +16,6 @@
 
   programs._1password-gui.polkitPolicyOwners = [ "jacob" ];
 
-  custom.desktop.environment = "gnome";
   custom.plymouth.enable = true;
 
   users.users.jacob = {

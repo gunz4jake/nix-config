@@ -18,6 +18,7 @@
     ../../modules/nixos/plymouth.nix
     ../../modules/nixos/undervolt.nix
     ../../modules/nixos/xanmod.nix
+    ../../modules/nixos/snapper.nix
   ];
 
   networking.hostName = "nixpad";

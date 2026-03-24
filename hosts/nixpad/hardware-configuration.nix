@@ -39,6 +39,12 @@
       options = [ "subvol=@nix" "compress=lzo" "noatime" ];
     };
 
+  fileSystems."/home/.snapshots" =
+    { device = "/dev/mapper/root";
+      fsType = "btrfs";
+      options = [ "subvol=@snapshots" "compress=lzo" "noatime" ];
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/2548-6D4F";
       fsType = "vfat";

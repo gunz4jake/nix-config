@@ -30,6 +30,7 @@
     pkgs.openmw
     pkgs.remmina
     pkgs.htop
+    pkgs.btrfs-assistant
 
     pkgs-unstable.brave
     pkgs-unstable.prismlauncher

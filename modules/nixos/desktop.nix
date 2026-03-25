@@ -36,7 +36,7 @@ in {
       services.displayManager.gdm.enable = true;
       services.desktopManager.gnome.enable = true;
       # Remove all bundled GNOME utility apps except Nautilus and Console.
-      services.gnome.core-utilities.enable = false;
+      services.gnome.core-apps.enable = false;
       environment.systemPackages = with pkgs; [ nautilus gnome-console ];
     })
     (mkIf (cfg.environment == "xmonad") {

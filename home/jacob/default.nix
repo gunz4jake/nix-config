@@ -34,7 +34,7 @@
     '';
     shellAliases = {
       vim = "nvim";
-      ":q" = "quit";
+      ":q" = "exit";
     };
   };
 

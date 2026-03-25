@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   # Systemd-boot EFI bootloader
@@ -18,8 +18,11 @@
 
   custom.plymouth.enable = true;
 
+  programs.fish.enable = true;
+
   users.users.jacob = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
+    shell = pkgs.fish;
   };
 }

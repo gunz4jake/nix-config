@@ -22,6 +22,21 @@
   # Let home-manager manage itself.
   programs.home-manager.enable = true;
 
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting
+      set fish_function_path ${pkgs.fishPlugins.pure}/share/fish/vendor_functions.d $fish_function_path
+      for f in ${pkgs.fishPlugins.pure}/share/fish/vendor_conf.d/*.fish
+        source $f
+      end
+      pfetch
+    '';
+    shellAliases = {
+      vim = "nvim";
+    };
+  };
+
   # ---------------------------------------------------------------------------
   # User packages:
   #   - Use `pkgs.*`          for stable (nixos-25.11) packages.
@@ -31,6 +46,7 @@
     pkgs.openmw
     pkgs.remmina
     pkgs.htop
+    pkgs.pfetch-rs
 
     pkgs-unstable.brave
     pkgs-unstable.prismlauncher

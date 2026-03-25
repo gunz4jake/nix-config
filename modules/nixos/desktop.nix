@@ -35,6 +35,8 @@ in {
       # GNOME Desktop Environment.
       services.displayManager.gdm.enable = true;
       services.desktopManager.gnome.enable = true;
+      # Remove all bundled GNOME utility apps (Nautilus/Files is preserved).
+      services.gnome.core-utilities.enable = false;
     })
     (mkIf (cfg.environment == "xmonad") {
       # Ly Display Manager

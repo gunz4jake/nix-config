@@ -37,6 +37,10 @@ in {
       "org/gnome/desktop/wm/preferences" = {
         button-layout = "appmenu:minimize,maximize,close";
       };
+
+      "org/gnome/desktop/notifications" = {
+        show-in-lock-screen = false;
+      };
     };
 
     home.pointerCursor = {

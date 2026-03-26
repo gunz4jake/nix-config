@@ -37,7 +37,14 @@ in {
       services.desktopManager.gnome.enable = true;
       # Remove all bundled GNOME utility apps except Nautilus and Console.
       services.gnome.core-apps.enable = false;
-      environment.systemPackages = with pkgs; [ nautilus gnome-console ];
+      environment.systemPackages = with pkgs; [ nautilus gnome-console gsettings-desktop-schemas ];
+      # Ensure GSettings schemas are available for GTK apps (e.g. openmw-launcher).
+      # Disabling core-apps removes some GNOME infrastructure that normally populates
+      # XDG_DATA_DIRS with these schema paths.
+      environment.sessionVariables.XDG_DATA_DIRS = [
+        "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+        "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+      ];
     })
     (mkIf (cfg.environment == "xmonad") {
       # Ly Display Manager

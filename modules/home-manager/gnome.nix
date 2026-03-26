@@ -10,6 +10,7 @@ in {
       gnomeExtensions.blur-my-shell
       gnome-tweaks
       gnome-extension-manager
+      celluloid
     ];
 
     gtk = {

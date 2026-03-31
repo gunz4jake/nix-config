@@ -42,6 +42,12 @@ in {
       "org/gnome/desktop/notifications" = {
         show-in-lock-screen = false;
       };
+
+      "org/gnome/desktop/privacy" = {
+        remove-old-trash-files = true;
+        remove-old-temp-files = true;
+        old-files-age = lib.hm.gvariant.mkUint32 7;
+      };
     };
 
     home.pointerCursor = {

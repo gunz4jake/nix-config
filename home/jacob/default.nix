@@ -48,6 +48,7 @@
     pkgs.remmina
     pkgs.htop
     pkgs.pfetch-rs
+    pkgs.moonlight-qt
 
     pkgs-unstable.brave
     pkgs-unstable.prismlauncher

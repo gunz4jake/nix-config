@@ -29,6 +29,7 @@
 
   # Use S3 deep sleep instead of s2idle — dramatically reduces battery drain on suspend.
   boot.kernelParams = [ "mem_sleep_default=deep" ];
+  boot.tmp.useTmpfs = true;
 
   # Intel UHD 620 — hardware video decoding.
   hardware.graphics = {
